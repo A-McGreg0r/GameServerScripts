@@ -1,9 +1,12 @@
 #todo add extra info for enabling service
-#file also need updated premions
+# idea file also need updated premonitions
 
 SERVICE_PATH=/etc/systemd/system
+# todo make these args?
 GAME=factorio
-GAME_FLAGS="--start-server /opt/factorio/saves/{save_file}.zip --server-settings /opt/factorio/data/server-settings.json"
+startOnBoot=y
+# idea should this be an arg
+GAME_FLAGS="--start-server /opt/$GAME/saves/{save_file}.zip --server-settings /opt/$GAME/data/server-settings.json"
 
 {
 echo '[Unit]'
@@ -15,12 +18,8 @@ echo "User=$USER"
 echo "ExecStart=/opt/$GAME/bin/x64/$GAME $GAME_FLAGS"
 } > $SERVICE_PATH/$GAME.service
 
+# idea it might just be better to have a enable and start/stop script
 
-while [ "Y" != "$startOnBoot" ] && [ "N" != "$startOnBoot" ];
-do
-   echo -n  "Start on boot?: [Y/N] "
-   read -r startOnBoot
-done
 
 
 if [ "Y" = "$startOnBoot" ]; then

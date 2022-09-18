@@ -13,31 +13,12 @@
 #/
 #/ written by Andrew Mcgregor <a-mcgregor381@protonmail.com>
 
-HELP=$(unset)
+
 USER=$(unset)
 GAME=$(unset)
 GAMEPATH=$(unset)
 
-usage()
-{
- echo "Usage: create_user.sh [options] [--] [<shell-script>...]"
- echo " -h,  --help        show help text"
- echo " -u,  --user        user to be created normally the game-name (Required)"
- echo " -g,  --game        the name of the game that is bein installed (Required)"
- echo " -gp, --group       user group to be created and add user to (Required)"
- echo " -p,  --path        path of the games install location (Optional) over writes default opt/GAME"
 
-
-# debug stuff
-echo "parsted stuff"
-echo ""
-echo "$PARSED_ARGUMENTS"
-echo ""
-echo "result"
-echo ""
-echo "$VALID_ARGUMENTS"
-exit 2
-}
 
 PARSED_ARGUMENTS=$(getopt -n createUser -o hu:g: --longoptions "help,user:,game:" -- "$@")
 
@@ -70,15 +51,8 @@ do
 done
 
 
-echo  "$HELP $SUBUSER $SUBGROUP $GAME $GAMEPATH"
+echo  "$HELP $USER+$GAME $USER $GAME $GAMEPATH"
 
 
 echo "creating new no login user '$USER' for managing this game server"
 adduser --disabled-login --no-create-home --gecos "$USER $GROUP"
-
-
-
-
-
-
-#game service location
