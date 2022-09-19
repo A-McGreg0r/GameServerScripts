@@ -3,8 +3,7 @@ from uuid import UUID,uuid4
 
 from .mocks import fake_gameList
 from .modles import Game
-from fastapi import APIRouter
-
+from fastapi import APIRouter, HTTPException
 
 initialize_router = APIRouter(
     prefix="/api/v1/initialize",
@@ -24,4 +23,6 @@ async def game_install(game: str, version: str, user: UUID, ):
     except Exception as e:
         return f"An exception occurred {e}"
     except:
-        return "something has gone wrong"  # todo set a default error message when unhandled
+        return HTTPException(status_code=400, detail="No Jessica token provided")
+    finally:
+        print("log some error info")

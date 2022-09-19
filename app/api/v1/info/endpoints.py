@@ -38,4 +38,4 @@ async def supported_game_list(game_name=None):
     else:
         raise HTTPException(status_code=404, detail="no game name provided")
 
-# need away to get the current running game and version
+# todo need away to get the current running game and version
