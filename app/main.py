@@ -1,21 +1,30 @@
-import subprocess
-
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 from api.v1.info.endpoints import info_router
-from api.v1.initialize.endpoints import initialize_router
 from api.v1.control.endpoints import control_router
+from api.v1.game_control.endpoints import game_control_router
+from api.v1.initialize.endpoints import initialize_router
 
 # Internal imports
 
 # note fake user is only for testing the auth api should take care of tokens for the over all service
 from fake_login import fake_users_db, UserInDB, fake_hash_password, get_current_active_user, User
 
-app = FastAPI()
-app.include_router(info_router)
+tags_metadata = [
+    {
+        "name": "Game Controls",
+        "description": "Operations to control a particulate game instance happens hear",
+    },
+]
+
+
+app = FastAPI(openapi_tags=tags_metadata)
 app.include_router(initialize_router)
+app.include_router(info_router)
 app.include_router(control_router)
+app.include_router(game_control_router)
+
 
 # idea all api are going to need an audit log so we can see what command are ran and so on (do this once it works)
 # versions will be stored under a diffrent table and use the games uuid to get a list of versions.

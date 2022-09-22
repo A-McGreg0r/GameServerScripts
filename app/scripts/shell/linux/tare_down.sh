@@ -3,8 +3,8 @@
 # todo error logging mode
 #/ Usage: tare_down.sh [options]
 #/  --help        show help text
-#/  --user        user to be removed normally the game-name (Required)
-#/  --game        the name of the game that is being uninstalled (Required)
+#/  --user        user to be removed normally the game_control-name (Required)
+#/  --game_control        the name of the game_control that is being uninstalled (Required)
 #/  --group       user group to be created and add user to (Optional)
 #/  -p,  --path        path of the games install location (Optional)
 #/
@@ -57,7 +57,7 @@ do
   case "$1" in
     -h | --help)  HELP=1        usage   ;;
     -u | --user)  USER="$2"     shift 2 ;;
-    -g | --game)  GAME="$2"     shift 2 ;;
+    -g | --game_control)  GAME="$2"     shift 2 ;;
     -r | --group) GROUP="$2" shift 2 ;;
     -p | --path)  GAMEPATH="$2"  shift 2 ;;
 

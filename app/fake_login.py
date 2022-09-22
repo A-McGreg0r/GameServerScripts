@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from pydantic import BaseModel
 from typing import Optional, List
 from fastapi import FastAPI, HTTPException, Depends, status
@@ -19,6 +21,7 @@ class User(BaseModel):
 # idea the auth suff hear should be for local user only and testing
 fake_users_db = {
     "johndoe": {
+
         "username": "admin",
         "full_name": "John Doe",
         "email": "johndoe@example.com",

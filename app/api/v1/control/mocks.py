@@ -3,6 +3,7 @@
 from typing import List
 from uuid import uuid4
 
+
 from .modles import Game
 
 
@@ -19,3 +20,5 @@ fake_gameList: List[Game] = [
          name="foo",
          group="userName",
          versions=["Latest"])]
+
+

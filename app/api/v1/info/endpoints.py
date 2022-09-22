@@ -1,4 +1,6 @@
-from .mocks import fake_gameList
+import requests
+
+from .mocks import fake_gameList, factorio_versions
 from .modles import Game
 
 from fastapi import APIRouter, HTTPException
@@ -22,20 +24,19 @@ async def supported_game_list():
         # todo set up a db with a list of versions for a few games for testing
         return games
     else:
-        raise HTTPException(status_code=404, detail="no game name provided")
+        raise HTTPException(status_code=404, detail="no game_control name provided")
 
 
-@info_router.get("/supported-game-versions")
+@info_router.get("/supported-game_control-versions")
 async def supported_game_list(game_name=None):
-
-    # fixme this should be a sql server call once we have an sql server
-    # data in db will look like versionUUDI | gameUUDI | gameVersion
-    # and will do a right? join based on teh gameName,  gameUUID and get a list of versions for the game
-    if game_name:
+    if game_name == "factorio":
         # todo set up a db with a list of versions for a few games for testing
-        versions = ["1.2.12"]
-        return versions
-    else:
-        raise HTTPException(status_code=404, detail="no game name provided")
 
-# todo need away to get the current running game and version
+        return await factorio_versions()
+    else:
+        raise HTTPException(status_code=404, detail="game_control not found")
+
+# todo need away to get the current running game_control and version
+
+
+

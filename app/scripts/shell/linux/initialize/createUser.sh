@@ -2,13 +2,13 @@
 # todo add a debug mode
 #/ Usage: createUser.sh [options]
 #/  -h,  --help        show help text
-#/  -u,  --user        user to be created normally the game-name (Required)
-#/  -g,  --game        the name of the game that is being installed (Required)
+#/  -u,  --user        user to be created normally the game_control-name (Required)
+#/  -g,  --game_control        the name of the game_control that is being installed (Required)
 #/  -gp, --group       user group to be created and add user to (Required)
 #/  -p,  --path        path of the games install location (Optional)"
 #/
-#/ A general script for creating a new user  adding the to a user group for manageing a peticulate game on a se>#/ adding the to a user group
-#/ crates a dir for sat game to be run form arg $3
+#/ A general script for creating a new user  adding the to a user group for manageing a peticulate game_control on a se>#/ adding the to a user group
+#/ crates a dir for sat game_control to be run form arg $3
 #/ and updating the new dir to be owned but the new user and group
 #/
 #/ written by Andrew Mcgregor <a-mcgregor381@protonmail.com>
@@ -36,7 +36,7 @@ do
   case "$1" in
     -h | --help)  HELP=1        usage    ;;
     -u | --user)  USER="$2"     shift 2  ;;
-    -g | --game)  GAME="$2"     shift 2  ;;
+    -g | --game_control)  GAME="$2"     shift 2  ;;
     -r | --group) GROUP="$2" shift 2  ;;
     -p | --path)  GAMEPATH="$2"  shift 2 ;;
     # -- means the end of the arguments; drop this, and break out of the while loop
