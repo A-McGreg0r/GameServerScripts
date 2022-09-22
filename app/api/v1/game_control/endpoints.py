@@ -48,7 +48,7 @@ async def game_install(game: str, start: bool):
         return "not yet implemented"
     except Exception as e:
         return f"An exception occurred {e}"
-    except:
+    except HTTPException:
         return HTTPException(status_code=400, detail="No Jessica token provided")
     finally:
         print("log some info")
@@ -61,7 +61,49 @@ async def game_install(game: str, start: bool):
         return "not yet implemented"
     except Exception as e:
         return f"An exception occurred {e}"
-    except:
+    except HTTPException:
+        return HTTPException(status_code=400, detail="No Jessica token provided")
+    finally:
+        print("log some info")
+
+
+# fixme game_control is not a good name atm but not yet architected how this will work exactly
+@game_control_router.put("/{game_control}/upload-save/",
+                          summary="upload a save file",
+                          description="upload a save for the game?",
+                          )
+async def game_install(game: str, start: bool):
+    try:
+        return "not yet implemented"
+    except Exception as e:
+        return f"An exception occurred {e}"
+    except HTTPException:
+        return HTTPException(status_code=400, detail="No Jessica token provided")
+    finally:
+        print("log some info")
+
+
+# fixme game_control is not a good name atm but not yet architected how this will work exactly
+@game_control_router.get("/{game_control}/download-save/")
+async def game_install(game: str, start: bool):
+    try:
+        return "not yet implemented"
+    except Exception as e:
+        return f"An exception occurred {e}"
+    except HTTPException:
+        return HTTPException(status_code=400, detail="No Jessica token provided")
+    finally:
+        print("log some info")
+
+
+# fixme game_control is not a good name atm but not yet architected how this will work exactly
+@game_control_router.put("/{game_control}/upload-mod/")
+async def game_install(game: str, start: bool):
+    try:
+        return "not yet implemented"
+    except Exception as e:
+        return f"An exception occurred {e}"
+    except HTTPException:
         return HTTPException(status_code=400, detail="No Jessica token provided")
     finally:
         print("log some info")
