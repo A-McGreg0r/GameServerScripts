@@ -1,16 +1,17 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
+# Internal imports
+
 from api.v1.info.endpoints import info_router
 from api.v1.control.endpoints import control_router
 from api.v1.game_control.endpoints import game_control_router
 from api.v1.initialize.endpoints import initialize_router
 
-# Internal imports
-
 # note fake user is only for testing the auth api should take care of tokens for the over all service
 from fake_login import fake_users_db, UserInDB, fake_hash_password, get_current_active_user, User
 
+# idea should i put each doc set closer to the end point which they are used and just import them
 tags_metadata = [
     {
         "name": "Game Controls",

@@ -22,7 +22,8 @@ fake_gameList: List[Game] = [
          versions=["Latest"])]
 
 
-# idea this will likly end up as part of a cron job on  a diffrent service along with other scripts to get version lists of games
+# idea this will likly end up as part of a cron job on  a diffrent service along with other scripts to get version
+#  lists of games
 def factorio_versions():
     url = 'https://updater.factorio.com/get-available-versions'
     resp = requests.get(url=url)

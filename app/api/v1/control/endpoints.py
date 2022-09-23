@@ -12,8 +12,7 @@ control_router = APIRouter(
 )
 
 
-
-@control_router.post("/add_game_support")
+#@control_router.post("/add_game_support")
 async def add_game_support(game: str, version: str):
     # todo set up a real db a few games for testing
     new_game = Game(id=uuid4(),
@@ -26,19 +25,3 @@ async def add_game_support(game: str, version: str):
             "name": game,
             "group": new_game.group,
             "versions": new_game.versions}
-
-
-@control_router.get("/game_support_list")
-async def supported_game_list(game_name=None):
-    if game_name:
-        # todo set up a db with a list of versions for a few games for testing
-        games = ["factorio", "foo", "bar"]
-        return game_name
-    else:
-        raise HTTPException(status_code=404, detail="no game_control name provided")
-
-
-
-
-
-

@@ -3,8 +3,6 @@ from uuid import UUID
 
 from fastapi import APIRouter, HTTPException
 
-
-
 game_control_router = APIRouter(
     prefix="/game_control-control",
     tags=["Game Controls"],
@@ -12,7 +10,6 @@ game_control_router = APIRouter(
     # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
-
 
 # idea
 #  This name space if for controlling a individual game service
@@ -27,7 +24,8 @@ game_control_router = APIRouter(
 # requirements
 #  only one game can be booted on start at a time
 
-@game_control_router.post("/{game_control}/auto-start/")
+
+@game_control_router.post("/{game_instance_id}/auto-start/")
 async def game_install(game: str, user: UUID, on_boot: bool):
     try:
         if game:
@@ -42,7 +40,7 @@ async def game_install(game: str, user: UUID, on_boot: bool):
 
 
 # fixme game_control is not a good name atm but not yet architected how this will work exactly
-@game_control_router.post("/{game_control}/start")
+@game_control_router.post("/{game_instance_id}/start")
 async def game_install(game: str, start: bool):
     try:
         return "not yet implemented"
@@ -55,7 +53,7 @@ async def game_install(game: str, start: bool):
 
 
 # fixme game_control is not a good name atm but not yet architected how this will work exactly
-@game_control_router.post("/{game_control}/stop/")
+@game_control_router.post("/{game_instance_id}/stop/")
 async def game_install(game: str, start: bool):
     try:
         return "not yet implemented"
@@ -68,11 +66,10 @@ async def game_install(game: str, start: bool):
 
 
 # fixme game_control is not a good name atm but not yet architected how this will work exactly
-@game_control_router.put("/{game_control}/upload-save/",
-                          summary="upload a save file",
-                          description="upload a save for the game?",
-                          )
-async def game_install(game: str, start: bool):
+@game_control_router.put("/{game_instance_id}/upload-save/",
+                         summary="upload a save file",
+                         description="upload a save for the game?", )
+async def game_upload_save(game: str, start: bool):
     try:
         return "not yet implemented"
     except Exception as e:
@@ -84,8 +81,8 @@ async def game_install(game: str, start: bool):
 
 
 # fixme game_control is not a good name atm but not yet architected how this will work exactly
-@game_control_router.get("/{game_control}/download-save/")
-async def game_install(game: str, start: bool):
+@game_control_router.get("/{game_instance_id}/download-save/")
+async def game_download_save(game: str, start: bool):
     try:
         return "not yet implemented"
     except Exception as e:
@@ -97,8 +94,8 @@ async def game_install(game: str, start: bool):
 
 
 # fixme game_control is not a good name atm but not yet architected how this will work exactly
-@game_control_router.put("/{game_control}/upload-mod/")
-async def game_install(game: str, start: bool):
+@game_control_router.put("/{game_instance_id}/upload-mod/")
+async def game_upload_mod(game: str, start: bool):
     try:
         return "not yet implemented"
     except Exception as e:
